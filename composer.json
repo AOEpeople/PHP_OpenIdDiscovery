@@ -1,0 +1,34 @@
+{
+    "name": "aoepeople/openiddiscovery",
+    "description": "A simple library to discover OpenId Providers with the Autodiscovery url. Tested with Keycloak",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Aoe people",
+            "email": "dev@aoe.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "JWT",
+        "Keycloak",
+        "OpenId",
+        "OAuth"
+    ],
+    "require": {
+        "php": ">=5.5",
+        "ext-openssl": "*",
+        "lcobucci/jwt": "^3.2",
+        "phpseclib/phpseclib": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "aoepeople\\OpenIdDiscovery\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
