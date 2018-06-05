@@ -1,0 +1,78 @@
+{
+    "issuer": "http://test/oauth2/test",
+    "authorization_endpoint": "https://test/oauth2/test/v1/authorize",
+    "token_endpoint": "https://test/oauth2/test/v1/token",
+    "registration_endpoint": "https://test/oauth2/v1/clients",
+    "jwks_uri": "./tests/Unit/fixtures/keys.json",
+    "response_types_supported": [
+        "code",
+        "token",
+        "code token"
+    ],
+    "response_modes_supported": [
+        "query",
+        "fragment",
+        "form_post",
+        "okta_post_message"
+    ],
+    "grant_types_supported": [
+        "authorization_code",
+        "implicit",
+        "refresh_token",
+        "password",
+        "client_credentials"
+    ],
+    "subject_types_supported": [
+        "public"
+    ],
+    "scopes_supported": [
+        "openid",
+        "profile",
+        "email",
+        "address",
+        "phone",
+        "offline_access"
+    ],
+    "token_endpoint_auth_methods_supported": [
+        "client_secret_basic",
+        "client_secret_post",
+        "client_secret_jwt",
+        "none"
+    ],
+    "claims_supported": [
+        "ver",
+        "jti",
+        "iss",
+        "aud",
+        "iat",
+        "exp",
+        "cid",
+        "uid",
+        "scp",
+        "sub"
+    ],
+    "code_challenge_methods_supported": [
+        "S256"
+    ],
+    "introspection_endpoint": "https://test/oauth2/test/v1/introspect",
+    "introspection_endpoint_auth_methods_supported": [
+        "client_secret_basic",
+        "client_secret_post",
+        "client_secret_jwt",
+        "none"
+    ],
+    "revocation_endpoint": "https://test/oauth2/test/v1/revoke",
+    "revocation_endpoint_auth_methods_supported": [
+        "client_secret_basic",
+        "client_secret_post",
+        "client_secret_jwt",
+        "none"
+    ],
+    "end_session_endpoint": "https://test/oauth2/test/v1/logout",
+    "request_parameter_supported": true,
+    "request_object_signing_alg_values_supported": [
+        "HS256",
+        "HS384",
+        "HS512"
+    ]
+}

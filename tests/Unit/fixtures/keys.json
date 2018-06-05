@@ -1,0 +1,20 @@
+{
+    "keys": [
+        {
+            "alg": "RS1024",
+            "e": "AQAB",
+            "n": "koc3TsDQXQMi09ZChoTWFeLq_33WYGuwN8zLVnvg8oIG48-rTi2J7QUWM116P4GTHd1eVMo0-gzNul2b1TzKOdijNalIFxwdNVdN7f6bPZCct1qSeaBoEUd8DzM55AuVgrs2EJmUBLK6CgWFUjaEUVIUwvp9xqQfZ41ANoHo9nI49fjET_HVmPV6XFw4ozoTikBthRMqfxHUfBpHGV1Kjah7wCOfIR9Fe9rrGqAbn0zzI3LxjtHbVwqu9AHAClaNHS9e7T5XQslhqs98ErC11t2j9f10Tph8ateJlxYKu6WZXl1YL_zw81lOVB1_uWPLfWac1UN9wWAMWEz2DQ8Luw",
+            "kid": "also_valid",
+            "kty": "RSA",
+            "use": "sig"
+        },
+        {
+            "alg": "RS1024",
+            "e": "AQAB",
+            "n": "MFswDQYJKoZIhvcNAQEBBQADSgAwRwJAfrZb0hqWsdhDy4EpaemRWfAIdgNu5EPG9BftL5BTQkC1Q4hd8OaZY2kmA1iUYcEikIGMcZLAloc0JZJ7rSPUAQIDAQAB",
+            "kid": "not_signed",
+            "kty": "RSA",
+            "use": "sig"
+        }
+    ]
+}
