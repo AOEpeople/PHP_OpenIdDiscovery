@@ -5,6 +5,14 @@ use phpseclib\Crypt;
 use phpseclib\Math;
 
 
+/**
+ * Class Cert
+ *
+ * @package  aoepeople/OpenIdDiscovery
+ * @author   AOE People <dev@aoe.com>
+ * @license  none none
+ * @link     www.aoe.com
+ */
 class Cert {
 
     /**
@@ -23,6 +31,7 @@ class Cert {
         if (!isset($this->keyData->kid)) {
             return false;
         }
+
         return $this->keyData->kid;
     }
     /**
@@ -38,6 +47,7 @@ class Cert {
         $rsa = new Crypt\RSA();
         $loadKey = array ('e'=>new Math\BigInteger($e,256), 'n'=>new Math\BigInteger($n, 256));
         $rsa->loadKey( $loadKey );
+
         return $rsa->getPublicKey();
     }
 
