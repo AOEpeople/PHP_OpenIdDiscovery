@@ -18,8 +18,8 @@
     "require": {
         "php": ">=7.0",
         "ext-openssl": "*",
-        "lcobucci/jwt": "~3.3.0",
-        "phpseclib/phpseclib": "~2.0.0"
+        "lcobucci/jwt": "~4.0.0",
+        "phpseclib/phpseclib": "~3.0.9"
     },
     "autoload": {
         "psr-4": {
