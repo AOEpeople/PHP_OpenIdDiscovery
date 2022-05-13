@@ -1,9 +1,8 @@
 <?php
 namespace aoepeople\OpenIdDiscovery;
 
-use phpseclib\Crypt;
-use phpseclib\Math;
-
+use phpseclib3\Crypt\PublicKeyLoader;
+use phpseclib3\Math\BigInteger;
 
 /**
  * Class Cert
@@ -44,11 +43,12 @@ class Cert {
         $n = $this->base64url_decode($n);
         $e = $this->base64url_decode($e);
 
-        $rsa = new Crypt\RSA();
-        $loadKey = array ('e'=>new Math\BigInteger($e,256), 'n'=>new Math\BigInteger($n, 256));
-        $rsa->loadKey( $loadKey );
+        $key = PublicKeyLoader::load([
+            'e' => new BigInteger($e, 256),
+            'n' => new BigInteger($n, 256)
+        ]);
 
-        return $rsa->getPublicKey();
+        return $key->toString('PKCS8');
     }
 
     /**

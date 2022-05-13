@@ -2,9 +2,13 @@
 namespace aoepeople\OpenIdDiscovery\Validator;
 
 use aoepeople\OpenIdDiscovery\Cert;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
-use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Token\Parser;
+use Lcobucci\JWT\Validation\Constraint\SignedWith;
+use Lcobucci\JWT\Configuration;
 
 /**
  * Class TokenValidator
@@ -26,7 +30,6 @@ class TokenValidator {
      */
     protected $certificates;
 
-
     /**
      * TokenValidator constructor.
      * @param string $tokenContent Token Content
@@ -34,10 +37,7 @@ class TokenValidator {
      */
     public function __construct($tokenContent, array $cert)
     {
-        $this->token = (new Parser())->parse((string) $tokenContent); // Parses from a string
-        $this->token->getHeaders(); // Retrieves the token header
-        $this->token->getClaims(); // Retrieves the token claims
-
+        $this->token = (new Parser(new JoseEncoder()))->parse((string) $tokenContent); // Parses from a string
         $this->certificates = $cert;
     }
 
@@ -52,7 +52,7 @@ class TokenValidator {
      * @return bool
      */
     public function isExpired() {
-        return $this->token->isExpired();
+        return $this->token->isExpired(new \DateTime());
     }
 
     /**
@@ -60,13 +60,18 @@ class TokenValidator {
      * @return bool
      */
     public function isSignedCorrect() {
-        $certificate = $this->findCertificate($this->token->getHeader('kid'));
+        $certificate = $this->findCertificate($this->token->headers()->get('kid'));
         if (!$certificate) {
             throw new \Exception('No certificate provided for token kid');
         }
 
         $signer = new Sha256();
-        if (  $this->token->verify($signer, $certificate->getPublicKey()))  {
+        $key = InMemory::plainText($certificate->getPublicKey());
+
+        $configuration = Configuration::forSymmetricSigner($signer, $key);
+
+        $constraint = new SignedWith($signer, $key);
+        if ($configuration->validator()->validate($this->token, $constraint))  {
             return true;
         } else {
             return false;
