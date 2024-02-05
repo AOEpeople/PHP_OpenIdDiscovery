@@ -25,6 +25,14 @@ class Cert {
     }
 
     /**
+     * @return \stdClass
+     */
+    public function getKeyData()
+    {
+        return $this->keyData;
+    }
+
+    /**
      * @return bool|string
      */
     public function getKeyIdendifier() {
